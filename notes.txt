@@ -1,0 +1,18 @@
+Geo Location and coordinates can be downloaded from below website
+geojson="https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
+
+1) Github sign up
+    - Create Repository
+2) Heroku sign up
+3) Write code in VSCode
+    - install packages from requirements.txt
+    - create ProcFile (used in Heroku deployment)
+    - create requirements.txt (used to install packages during deployment in Heroku)
+    - create runtime.txt (give current python version)
+4) Check in code in github Repository
+5) Login to Heroku
+    - Configure github connection
+    - Select Hackathon Repository
+    - Trigger deployment
+    - Upon successful deployment. Verified website using URL
+    
