@@ -10,6 +10,8 @@ import dash_ag_grid as dag
 #Create Dash object
 app = Dash(__name__)
 
+server = app.server
+
 #Load Entire dataset downloaded from Kaggle : https://www.kaggle.com/datasets/abhinand05/crop-production-in-india?resource=download
 df=pd.read_csv('data/crop_production.csv')
  
