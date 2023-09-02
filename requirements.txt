@@ -1,5 +1,6 @@
 dash
 dash_ag_grid
+dash-bootstrap-components
 pandas
 geojson
 gunicorn

@@ -1,16 +1,19 @@
 from dash import Dash, html, dcc, callback, Output, Input
-import plotly.express as px
-import pandas as pd
-import geojson
+import plotly.express as px  # used to create visualization and graph
+import pandas as pd  # used to read csv file and graph data
+import geojson  #used for Geo Graph
 import dash
-import dash_ag_grid as dag
+import dash_ag_grid as dag  # used for Grid
+import dash_bootstrap_components as dbc  # for bootstrap UI and Styles
+
 #df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
 
 
 #Create Dash object
-app = Dash(__name__)
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.title="Crop Analyzer"
 
-server = app.server
+server = app.server  # require for Heroku deployment
 
 #Load Entire dataset downloaded from Kaggle : https://www.kaggle.com/datasets/abhinand05/crop-production-in-india?resource=download
 df=pd.read_csv('data/crop_production.csv')
@@ -85,7 +88,7 @@ def get_cur_filter(n):
         return {'State_Name': {'filterType': 'text', 'type': 'contains', 'filter': 'Guj'}}
     return dash.no_update
 
-app.layout = html.Div([
+layout1 = html.Div([
     html.H1(children='Indian Crop Analyzer', style={'textAlign':'center'}),
     dcc.Dropdown(stateNames, 'Gujarat', id='dropdown-selection'),
     dcc.Graph(id='graph-content'),
@@ -95,6 +98,34 @@ app.layout = html.Div([
     ),
     populationTable()
 ])
+
+app.layout = html.Div([
+
+    dbc.Row(dbc.Col(html.H1(children='Indian Crop Analyzer', style={'textAlign':'center'}))),
+    dbc.Row(dbc.Col(html.H2(children='A Indian Crop Analyzer show Production and statistics.', style={'textAlign':'center'}))),
+    dbc.Row(
+            [
+                dbc.Col(dcc.Dropdown(stateNames, 'Gujarat', id='dropdown-selection'),),
+                dbc.Col(html.Div(" ")),
+            ]
+        ),   
+    dbc.Row(
+            [
+                dbc.Col(dcc.Graph(id='graph-content')),
+                dbc.Col(dcc.Graph(id='bar-graph-content')),
+            ]
+        ),   
+    dbc.Row(
+            [
+                dbc.Col(dcc.Graph(
+                            figure=GeoMap(),id='geo-graph-content'
+                        )),
+                dbc.Col(populationTable()),
+            ]
+        ),   
+    
+])
+
 
 @callback(
     Output('graph-content', 'figure'),

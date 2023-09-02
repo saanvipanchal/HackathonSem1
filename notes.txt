@@ -16,3 +16,11 @@ geojson="https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea
     - Trigger deployment
     - Upon successful deployment. Verified website using URL
     
+
+point to cover    
+    - heading for ploted graphs
+    -crop wise area production 
+        -wheat , rice inidividual
+    -season wise production 
+    -top 10 highest production 
+    -top 10 lowest production 
