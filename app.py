@@ -106,25 +106,25 @@ def get_cur_filter(n):
 #Main Web Application Layout
 app.layout = dbc.Container([
 
-    dbc.Row(dbc.Col(html.H1(children='Indian Crop Analyzer', style={'textAlign':'center'}), class_name='bg-primary text-white')),
+    dbc.Row(dbc.Col(html.H1(children='Indian Crop Analyzer', style={'textAlign':'center'}), class_name='bg-primary text-white'),class_name='p-2'),
     dbc.Row(dbc.Col(html.H4(children='A Indian Crop Analyzer show Production and statistics.', style={'textAlign':'center'}))),
     dbc.Row(dbc.Col(html.Hr())),
     dbc.Row(
             [
-                dbc.Col(dcc.Dropdown(stateNames, 'Gujarat', id='dropdown-selection'),),
+                dbc.Col(dcc.Dropdown(stateNames, 'Gujarat', id='dropdown-selection')),
                 dbc.Col(html.Div(" ")),
-            ]
+            ], class_name="m-2"
         ),   
     dbc.Row(
             [
                 dbc.Col(
                     [html.H5(children="Indian crop production year wise", style={'textAlign':'center'}),
-                     dcc.Graph(id='graph-content')]
-                    , class_name='lg-2'),
+                     dcc.Graph(id='graph-content')], class_name='border-2  border-success'
+                    ),
                 dbc.Col(
                     [(html.H5(children="Analysis of crop production year-wise", style={'textAlign':'center'})),
-                    dcc.Graph(id='bar-graph-content')],class_name='lg-2'),
-            ]
+                    dcc.Graph(id='bar-graph-content')]),
+            ], class_name="m-2"
         ),   
     dbc.Row(
             [
@@ -132,11 +132,11 @@ app.layout = dbc.Container([
                          [(html.H5(children="Analysis of state-wise and year-wise crop production", style={'textAlign':'center'})),
                             dcc.Graph(
                             figure=GeoMap(),id='geo-graph-content')]
-                        ,class_name='lg-2'),
+                        ),
                 dbc.Col(
                     [(html.H5(children="Analysis of state-wise and year-wise crop production", style={'textAlign':'center'})),
-                    CropProductionTable()],class_name='lg-2'),
-            ]
+                    CropProductionTable()])
+            ], class_name="m-2"
         ),
       dbc.Row(
             [
@@ -144,14 +144,14 @@ app.layout = dbc.Container([
                        ( html.H5(children="Analysis of Season-wise Crop Production" , style={'textAlign':'center'})),
                         dcc.Dropdown(stateNames,'Gujarat', id="dropdown-season-pie"),
                         dcc.Graph(id="graph-season-pie")
-                    ],class_name='lg-2'),
+                    ]),
                 dbc.Col([
                     (html.H5(children="Analysis of area-wise and state-wise crop production",style={'textAlign':'center'})),
-                    dcc.Graph(id='datatable-upload-graph', figure = BubbleChart())],class_name='lg-2'),
-            ]
+                    dcc.Graph(id='datatable-upload-graph', figure = BubbleChart())]),
+            ], class_name="m-2"
         ),         
     
-], class_name="bg-light mt-n1")
+], class_name="bg-light mt-n1 border-2 border-success")
 
 #Main Callback
 @callback(
