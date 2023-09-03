@@ -50,6 +50,7 @@ def BubbleChart():
 def GeoMap():
     dfGeo=df.groupby('State_Name').sum("Production")
     dfGeo.reset_index(inplace=True)
+    dfGeo = dfGeo.replace('Jammu and Kashmir ','Jammu & Kashmir', regex=True)    
     dfGeo.rename(columns = {'State_Name':'state'}, inplace = True)
     
     fig = px.choropleth(
