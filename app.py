@@ -108,7 +108,7 @@ def get_cur_filter(n):
 app.layout = dbc.Container([
 
     dbc.Row(dbc.Col(html.H1(children='Indian Crop Analyzer', style={'textAlign':'center'}), class_name='bg-primary text-white'),class_name='p-2'),
-    dbc.Row(dbc.Col(html.H4(children='A Indian Crop Analyzer show Production and statistics', style={'textAlign':'center'}))),
+    dbc.Row(dbc.Col(html.H4(children='Help Agriculture,Help Farmers', style={'textAlign':'center'}))),
     dbc.Row(dbc.Col(html.Hr())),
     dbc.Row(
             [
